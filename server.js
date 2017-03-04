@@ -28,7 +28,7 @@ mongoose.Promise = Promise;
 if (PORT === 3000) {
   mongoose.connect("mongodb://localhost/nytreact");
 } else {
-  mongoose.connect("");
+  mongoose.connect("mongodb://heroku_xdg0ghjn:40jq8t9docl0t751c8aodohhj1@ds113580.mlab.com:13580/heroku_xdg0ghjn");
 }
 
 var db = mongoose.connection;
