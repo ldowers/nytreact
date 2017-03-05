@@ -1,29 +1,39 @@
 import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 const ArticleSchema = new Schema({
   title: {
-    type: String
+    type: String,
+    required: true
   },
   date: {
-    type: Date
+    type: Date,
+    required: true
   },
   url: {
-    type: String
-  },
-  note: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
 ArticleSchema.method({});
 
 ArticleSchema.statics = {
-    list(limit) {
-      if (!limit) {
-        limit = 5;
-      }
-      return this.find().limit(limit).exec();
+    list() {
+      return this.find().exec();
+    },
+
+    save(title, date, url) {
+      return this.create({
+        title: title,
+        date: date,
+        url: url
+        }).exec();
+    },
+
+    remove(articleID) {
+      return this.findOneAndRemove({"_id": articleID}).exec();
     }
 };
 

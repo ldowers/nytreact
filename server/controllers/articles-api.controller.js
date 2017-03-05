@@ -3,19 +3,38 @@ import express from "express";
 
 const router = express.Router();
 
-function findSpecificArticle(req, res){
-    Article.findById(req.params.id).then(data => {
-        res.json(data);
-    });
+function listArticles(req, res) {
+    Article
+        .list()
+        .then(data => {
+            res.json(data);
+        });
 }
 
-function listArticles(req, res){
-    Article.list().then(data => {
-        res.json(data);
-    });
+function saveArticle(req, res) {
+    Article
+        .save(req.body.title, req.body.date, req.body.url)
+        .then(data => {
+            res.json(data);
+        });
 }
 
-router.route("/").get(listArticles);
-router.route("/:id").get(findSpecificArticle);
+function removeArticle(req, res) {
+    Article
+        .remove(req.params.id)
+        .then(data => {
+            res.json(data);
+        });
+}
+
+router
+    .route("/")
+    .get(listArticles);
+router
+    .route("/")
+    .post(saveArticle);
+router
+    .route("/:id")
+    .delete(removeArticle);
 
 export default router;
