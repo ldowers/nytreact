@@ -7,9 +7,8 @@
     "build": "webpack",
     "build:watch": "webpack -w",
     "server": "node index",
-    "start": "npm run build && node index",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "webpack --config ./webpack.config.js --progress"
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
