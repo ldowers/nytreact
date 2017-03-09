@@ -1,8 +1,8 @@
 // Include Server Dependencies
-import express from "express";
-import bodyParser from "body-parser";
-import logger from "morgan";
-import mongoose from "mongoose";
+var express = require("express");
+var bodyParser = require("body-parser");
+var logger = require("morgan");
+var mongoose = require("mongoose");
 
 // Requiring our Article model
 var Article = require("./server/models/Article.js");
@@ -106,4 +106,4 @@ app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });
 
-export default app;
+// export default app;
