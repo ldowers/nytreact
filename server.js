@@ -82,7 +82,7 @@ app.post("/api/saved", function(req, res) {
 // Route to delete an article from saved list
 app.delete("/api/saved/", function(req, res) {
 
-  var url = req.params.url;
+  var url = req.param("url");
 
   Article.find({ url: url }).remove().exec(function(err) {
     if (err) {
